@@ -30,6 +30,8 @@ public class CommentService {
             comment.setEmail(comment.getEmail());
             comment.setPassword(comment.getPassword());
             comment.setMessage(comment.getMessage());
+            comment.setInclusionDate(comment.getInclusionDate());
+            comment.setLoggedIn(comment.getLoggedIn());
             comment.setStatusComment(StatusComment.SENT);
             System.out.println("Comment sented");
         } catch (MailException e) {

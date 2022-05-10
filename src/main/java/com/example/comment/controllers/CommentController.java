@@ -1,6 +1,7 @@
 package com.example.comment.controllers;
 
 import com.example.comment.dto.CommentDTO;
+import com.example.comment.enums.Status;
 import com.example.comment.exception.ResourcesNotFoundException;
 import com.example.comment.repositories.CommentRepository;
 import com.example.comment.services.CommentService;
@@ -14,6 +15,7 @@ import com.example.comment.models.Comment;
 
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -68,6 +70,30 @@ public class CommentController {
         Map<String, Boolean> response = new HashMap<>();
         response.put("Usuário deletado", Boolean.TRUE);
         return response;
+    }
+
+    @GetMapping("/comment/login")
+    public Status loginUser(@Valid @RequestBody Comment comment) {
+        List<Comment> comments = commentRepository.findAll();
+        for (Comment other : comments) {
+            if (other.equals(comment)) {
+                comment.setLoggedIn(true);
+                return Status.SUCCESS;
+            }
+        }
+        return Status.FAILURE;
+    }
+
+    @GetMapping("/comment/logout")
+    public Status logUserOut(@Valid @RequestBody Comment comment) {
+        List<Comment> users = commentRepository.findAll();
+        for (Comment other : users) {
+            if (other.equals(comment)) {
+                comment.setLoggedIn(false);
+                return Status.SUCCESS;
+            }
+        }
+        return Status.FAILURE;
     }
 
 }
