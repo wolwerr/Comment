@@ -18,6 +18,6 @@ public class CommentDTO {
     private String message;
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy")
     private Date inclusionDate;
-    public Boolean loggedIn;
+//    public Boolean loggedIn;
 
 }

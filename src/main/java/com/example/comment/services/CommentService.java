@@ -25,13 +25,11 @@ public class CommentService {
     public Comment sendComment(Comment comment){
         comment.setInclusionDate(LocalDateTime.now());
         try {
-            comment.setId(comment.getId());
             comment.setName(comment.getName());
             comment.setEmail(comment.getEmail());
             comment.setPassword(comment.getPassword());
             comment.setMessage(comment.getMessage());
             comment.setInclusionDate(comment.getInclusionDate());
-            comment.setLoggedIn(comment.getLoggedIn());
             comment.setStatusComment(StatusComment.SENT);
             System.out.println("Comment sented");
         } catch (MailException e) {

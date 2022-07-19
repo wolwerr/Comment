@@ -72,7 +72,7 @@ public class CommentController {
         return response;
     }
 
-    @GetMapping("/comment/login")
+    @PostMapping("/comment/login")
     public Status loginUser(@Valid @RequestBody Comment comment) {
         List<Comment> comments = commentRepository.findAll();
         for (Comment other : comments) {
